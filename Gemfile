@@ -5,13 +5,7 @@ source "https://rubygems.org"
 gem "jekyll-theme-chirpy", "~> 6.1"
 
 group :test do
-  gem "html-proofer", "~> 3.18"
-end
-
-task :html_proofer do
-  Rake::Task['build'].invoke
-  puts 'Running html proofer...'.bold
-  HTMLProofer.check_directory('./_site', allow_hash_href: true).run
+  gem "html-proofer", "~> 3.18", :href_ignore => ["#" ]
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
