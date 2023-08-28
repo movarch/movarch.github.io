@@ -8,6 +8,12 @@ group :test do
   gem "html-proofer", "~> 3.18"
 end
 
+task :html_proofer do
+  Rake::Task['build'].invoke
+  puts 'Running html proofer...'.bold
+  HTMLProofer.check_directory('./_site', allow_hash_href: true).run
+end
+
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 platforms :mingw, :x64_mingw, :mswin, :jruby do
